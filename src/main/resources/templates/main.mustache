@@ -1,0 +1,31 @@
+<html>
+<body>
+<div>
+    <div>
+        <form action="/logout" method="post">
+            <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+            <input type="submit" value="Sign Out">
+        </form>
+    </div>
+    <form method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+        <input type="text" name="text" placeholder="Enter station name"/>
+        <input type="text" name="city" placeholder="Enter city name">
+        <button type="submit">Добавить</button>
+    </form>
+</div>
+<div>Список станций</div>
+<form method="post" action="filter">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
+    <input type="text" name="filter" >
+    <button type="submit">Найти</button>
+</form>
+{{#stations}}
+<div>
+
+    <span>{{name}}</span>
+    <i>{{city}}</i>
+</div>
+{{/stations}}
+</body>
+</html>

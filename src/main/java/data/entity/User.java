@@ -2,41 +2,27 @@ package data.entity;
 
 
 
-import data.entity.enums.RoleEnum;
+import data.entity.enums.Role;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table(name = "usr")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-
-    private String name;
-
-    private String email;
-
-    private String login;
-
+    private Long id;
+    private String username;
     private String password;
-
-    private RoleEnum role;
+    private boolean active;
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
 
     public User() {
-    }
-
-    public User(String name, String email, String login, String password, RoleEnum role) {
-        this.name = name;
-        this.email = email;
-        this.login = login;
-        this.password = password;
-        this.role = role;
-    }
-
-    public User(String name) {
-        this.name = name;
     }
 
     public Long getId() {
@@ -47,28 +33,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -79,11 +49,19 @@ public class User {
         this.password = password;
     }
 
-    public RoleEnum getRole() {
-        return role;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setRole(RoleEnum role) {
-        this.role = role;
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

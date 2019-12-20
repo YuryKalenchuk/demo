@@ -14,14 +14,14 @@ public class Transport {
 
     private String name;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Station> stationsOfTransport;
+//    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    private List<Station> stationsOfTransport;
     public Transport() {
     }
 
     public Transport(String name, List<Station> stationsOfTransport) {
         this.name = name;
-        this.stationsOfTransport = stationsOfTransport;
+//        this.stationsOfTransport = stationsOfTransport;
     }
 
     public long getId() {
@@ -40,11 +40,11 @@ public class Transport {
         this.name = name;
     }
 
-    public List<Station> getStationsOfTransport() {
-        return stationsOfTransport;
-    }
-
-    public void setStationsOfTransport(List<Station> stationsOfTransport) {
-        this.stationsOfTransport = stationsOfTransport;
-    }
+//    public List<Station> getStationsOfTransport() {
+//        return stationsOfTransport;
+//    }
+//
+//    public void setStationsOfTransport(List<Station> stationsOfTransport) {
+//        this.stationsOfTransport = stationsOfTransport;
+//    }
 }
